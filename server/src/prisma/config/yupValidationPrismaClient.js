@@ -25,13 +25,20 @@ mutativeActions.forEach((action) => {
       if (args.data instanceof Array) {
         await Promise.all(
           args.data.map(async (dataObject) => {
-            return await modelSchema.yupSchema.validate(dataObject, { abortEarly: false });
+            return await modelSchema.yupSchema.validate(dataObject, {
+              abortEarly: false,
+              stripUnknown: false,
+            });
           })
         );
       } else {
-        transformedData = await modelSchema.yupSchema.validate(args.data, { abortEarly: false });
+        transformedData = await modelSchema.yupSchema.validate(args.data, {
+          abortEarly: false,
+          stripUnknown: false,
+        });
       }
     } catch (error) {
+      console.log(error);
       throw new ValidationError(error.errors);
     }
 
