@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace unicorns-client build",
+    "dev": "yarn workspace unicorns-server dev",
+    "dev:debug": "yarn workspace unicorns-server dev:debug",
+    "heroku-postbuild": "yarn workspace unicorns-client build",
+    "start": "yarn workspace unicorns-server start",
+    "dev:cypress": "yarn workspace unicorns-server dev:e2e",
+    "e2e:open": "yarn workspace unicorns-e2e e2e:open",
+    "e2e:run": "yarn workspace unicorns-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^16.18"
+  }
+}
